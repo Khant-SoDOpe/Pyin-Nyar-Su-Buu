@@ -1,7 +1,6 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, send_file
 import redis
 from functools import wraps
-import os
 
 app = Flask(__name__)
 
@@ -13,10 +12,14 @@ def require_auth(view):
     return redirect(url_for('loginpage'))
   return wrapped_view
 
+REDIS_HOST = os.environ.get('REDIS_HOST', 'localhost')
+REDIS_PORT = int(os.environ.get('REDIS_PORT', 6379))
+REDIS_PASSWORD = os.environ.get('REDIS_PASSWORD', None)
+
 r = redis.Redis(
-  host=os.environ['REDIS_HOST'],
-  port=os.environ['REDIS_PORT'],
-  password=os.environ['REDIS_PASSWORD']
+    host=REDIS_HOST,
+    port=REDIS_PORT,
+    password=REDIS_PASSWORD
 )
 
 @app.route("/")
@@ -27,7 +30,11 @@ def index():
 def alive():
   return "Alive"
 
-
+@app.route('/sitemap.xml')
+def sitemap():
+    # Assuming 'sitemap.xml' is in the same directory as your Flask app
+  filename = 'sitemap.xml'
+  return send_file(filename, mimetype='application/xml')
 
 
 
@@ -94,17 +101,17 @@ def FormalEducationSubjects():
   return render_template("FormalEducation.html")
 
 
-@app.route("/FormalEducation/Subjects/myanmar")
+@app.route("/myanmar")
 def myanmar():
   return render_template("myan.html")
 
-@app.route("/FormalEducation/Subjects/myanmar/yaythalpyazat")
+@app.route("/yaythalpyazat")
 @require_auth
 def yaythalpyazat():
   return render_template("yaythalpyazat.html")
 
 
-@app.route("/FormalEducation/Subjects/myanmar/mahawthahtar")
+@app.route("/mahawthahtar")
 @require_auth
 def mahawthahtar():
   return render_template("myanmar.html")
@@ -188,5 +195,5 @@ def logout():
   return redirect(url_for('loginpage'))
 
 if __name__ == "__main__":
-  app.secret_key = my_secret = os.environ['APP_SECRECT_KEY']
-  app.run(host='0.0.0.0', port=5000) 
+  app.secret_key = my_secret = "handsomeKhant"
+  app.run(host='0.0.0.0', port=3000) 
