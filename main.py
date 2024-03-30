@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session, send_file
 import redis
 from functools import wraps
+import os
 
 app = Flask(__name__)
 
@@ -12,14 +13,10 @@ def require_auth(view):
     return redirect(url_for('loginpage'))
   return wrapped_view
 
-REDIS_HOST = os.environ.get('REDIS_HOST', 'localhost')
-REDIS_PORT = int(os.environ.get('REDIS_PORT', 6379))
-REDIS_PASSWORD = os.environ.get('REDIS_PASSWORD', None)
-
 r = redis.Redis(
-    host=REDIS_HOST,
-    port=REDIS_PORT,
-    password=REDIS_PASSWORD
+    host=os.environ.get('REDIS_HOST'),
+    port=os.environ.get('REDIS_PORT'),
+    password=os.environ.get('REDIS_PASSWORD')
 )
 
 @app.route("/")
