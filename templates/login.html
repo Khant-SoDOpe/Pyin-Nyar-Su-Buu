@@ -93,6 +93,29 @@
               </div>
             </div>
           </section>
+
+          {% if condition == 'error' %}
+          <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+          <script>
+              var contact = "{{ contact }}";
+              Swal.fire({
+                  icon: "error",
+                  title: "Oops...",
+                  text: contact
+              });
+          </script>
+            {% elif condition == 'success' %}
+                <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+                <script>
+                    var contact = "{{ contact }}";
+                    Swal.fire({
+                        title: contact,
+                        text: "Now Please Login!",
+                        icon: "success"
+                    });
+                </script>
+            {% endif %}
+      
         <!--  end form -->
 
      {% include 'footer.html' %}

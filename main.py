@@ -14,9 +14,9 @@ def require_auth(view):
   return wrapped_view
 
 r = redis.Redis(
-    host=os.environ.get('REDIS_HOST'),
-    port=os.environ.get('REDIS_PORT'),
-    password=os.environ.get('REDIS_PASSWORD')
+    host="select-flamingo-36925.upstash.io",
+    port=36925,
+    password="275af7b4f241424e8ed756d6227c8acc"
 )
 
 @app.route("/")
@@ -147,14 +147,17 @@ def login():
         if user_data[b'Password'].decode('utf-8') == password:
             # Set the user as authenticated in the session
             session['authenticated'] = True
+            condition = True
             letter = 'Successfully Login!'
-            return render_template('show.html', contact=letter)
+            return render_template('index.html', contact=letter,condition=condition)
         else:
+            condition = "error"
             letter = 'Please Check Your Password!'
-            return render_template('show.html', contact=letter)
+            return render_template('login.html', contact=letter,condition=condition)
     else:
+        condition = "error"
         letter = 'No Account Found!'
-        return render_template('show.html', contact=letter)
+        return render_template('login.html', contact=letter,condition=condition)
 
 
 # ----------------------------------------------------------signup
@@ -168,8 +171,9 @@ def signup():
     if password == password2:
         # Check if the user already exists
         if r.exists(email):
+            condition = True
             letter = "Already Have an Account!"
-            return render_template('show.html', contact=letter)
+            return render_template('signup.html', contact=letter,condition=condition)
 
         # Store user data in Redis
         user_data = {
@@ -178,12 +182,13 @@ def signup():
             'Password': password
         }
         r.hmset(email, user_data)
-        
-        letter = "Successfully Created!"
-        return render_template('show.html', contact=letter)
+        condition = "success"
+        letter = "Account Successfully Created!"
+        return render_template('login.html', contact=letter,condition=condition)
     else:
-        letter = "Please Check Your Password!"
-        return render_template('show.html', contact=letter)
+        condition = True
+        letter = "Please Check Your Confirm Password!"
+        return render_template('signup.html', contact=letter,condition=condition)
 
 @app.route("/logout")
 @require_auth

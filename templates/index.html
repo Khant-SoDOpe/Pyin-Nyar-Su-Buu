@@ -140,6 +140,17 @@
   {% include 'footer.html' %}
 
 </body>
+    {% if condition %}
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            var contact = "{{ contact }}";
+            Swal.fire({
+            title: "Good job!",
+            text: contact,
+            icon: "success"
+            });
+        </script>
+    {% endif %}
   <script>
     var audio1 = $("audio")[0];
     var audio2 = $("audio")[1];
