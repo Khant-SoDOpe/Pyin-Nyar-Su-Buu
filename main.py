@@ -195,7 +195,3 @@ def signup():
 def logout():
   session.pop('authenticated', None)  # Remove the 'authenticated' key from the session
   return redirect(url_for('loginpage'))
-
-if __name__ == "__main__":
-  app.secret_key = my_secret = "handsomeKhant"
-  app.run(host='0.0.0.0', port=3000) 
