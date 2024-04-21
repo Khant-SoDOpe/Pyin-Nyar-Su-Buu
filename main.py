@@ -14,9 +14,9 @@ def require_auth(view):
   return wrapped_view
 
 r = redis.Redis(
-    host="select-flamingo-36925.upstash.io",
-    port=36925,
-    password="275af7b4f241424e8ed756d6227c8acc"
+    host=os.environ.get('REDIS_HOST'),
+    port=os.environ.get('REDIS_PORT'),
+    password=os.environ.get('REDIS_PASSWORD')
 )
 
 @app.route("/")
