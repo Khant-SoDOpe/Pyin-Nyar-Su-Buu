@@ -8,4 +8,4 @@ redis
 requests
 google-auth
 google-auth-oauthlib
-dotenv
+python-dotenv
