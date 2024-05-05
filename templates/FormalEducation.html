@@ -41,7 +41,7 @@
 			<div class="col-md-4">
 				<img src="../static/images/education.png">
 				<h3 class="p-3 text-white">Myanmar</h3>
-				<button type="button" class="btn button"><a href="/myanmar">Start Learning</a></button>
+				<button type="button" class="btn button"><a href="/FormalEducation/Subjects/myanmar">Start Learning</a></button>
 			</div>
 			<div class="col-md-4">
 				<img src="../static/images/education.png">
@@ -66,7 +66,7 @@
 			<div class="col-md-4">
 				<img src="../static/images/education.png">
 				<h3 class="p-3 text-white">Science</h3>
-				<button type="button" class="btn button"><a href="/science">Start Learning</a></button>
+				<button type="button" class="btn button"><a href="/FormalEducation/Subjects/science">Start Learning</a></button>
 			</div>
 			<div class="col-md-4">
 				<img src="../static/images/education.png">
@@ -98,15 +98,14 @@
     var audio2 = $("#audio1")[0];
     var subjectPage = true;
      $(document).on('keypress',function(e) {
-		  console.log(e.which);
 		    if(e.which == 13 && subjectPage == true) {
 		        audio1.play();
 		        audio2.play();
             gradePage = false;
 		    }else if(e.which == 13 && subjectPage == false) {
-          window.location.href = "/essential";
+          window.location.href = "/FormalEducation/Subjects/science";
 		    }else if(e.which == 49) {
-          window.location.href = "/myanmar";
+          window.location.href = "/FormalEducation/Subjects/myanmar";
 		    }
 		}); 
   </script>

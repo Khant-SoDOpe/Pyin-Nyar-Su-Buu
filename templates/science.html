@@ -5,12 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Science</title>
-  <!-- Custom styles for this template -->
-    <link href="../static/css/navbar.css" rel="stylesheet">
-     <link rel="stylesheet" href="../static/css/footer.css" />
-  
-    <link rel="stylesheet" href="../static/css/science.css" />
-    <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css">
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='css/navbar.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/footer.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/science.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
 </head>
 <body>
   {% include 'header.html' %}

@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta name="google-site-verification" content="oPF5ItnxERBX4ZDnJmfVvv57Ov7IJ8CCovWymtLIStI" />
@@ -151,23 +151,45 @@
             });
         </script>
     {% endif %}
-  <script>
-    var audio1 = $("audio")[0];
-    var audio2 = $("audio")[1];
-    $(".banner").on("click",function(event){
-        console.log("click")
+    <script>
+        $(document).ready(function() {
+    // Define audio elements
+    var audio0 = $("audio")[0];
+    var audio1 = $("audio")[1];
+    var audio2 = $("audio")[2];
+
+    // Click event handler for the banner
+    $(".banner").on("click", function(event){
+        console.log("click");
         var pointer = event.clientY;
-        audio1.play();
+        audio0.play();
     });
-    $(document).on('keypress',function(e) {
-      console.log(e.which);
-        if(e.which == 13) {
-            console.log('You pressed enter!');
-            audio2.play(); 
-             $('html, body').animate({
-                scrollTop:     $("#education").offset().top
-            }, 1000);
+
+    // Keypress event handler
+    $(document).on('keypress', function(e) {
+        // Check if the pressed key is 1, 2, or 3
+        if(e.which === 49 || e.which === 50 || e.which === 51) {
+            // Determine the route based on the pressed key
+            var route;
+            if (e.which === 49) {
+                route = "/FormalEducation";
+            } else if (e.which === 50) {
+                route = "/essential";
+            } else if (e.which === 51) {
+                route = "/steam";
+            }
+            // Navigate to the determined route
+            window.location.href = route;
+        } else if(e.which === 13) { // Check if the pressed key is Enter
+            audio1.play();
+        } else if(e.which === 32) { // Check if the pressed key is Spacebar
+            audio0.play();
         }
-    }); 
+    });
+});
+
+
+
+
   </script>
 </html>
