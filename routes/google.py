@@ -21,7 +21,7 @@ os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 flow = Flow.from_client_secrets_file(
     client_secrets_file=client_secrets_file,
     scopes=["https://www.googleapis.com/auth/userinfo.profile", "https://www.googleapis.com/auth/userinfo.email", "openid"],
-    redirect_uri="http://localhost:3000/callback"
+    redirect_uri="https://pyinnyarsubuu.onrender.com/callback"
 )
 
 @google_bp.route("/googleLogin")
