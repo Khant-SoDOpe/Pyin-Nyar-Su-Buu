@@ -1,3 +1,5 @@
+# Pyin Nyar Su Buu
+
 ## Pyinnyar Subuu - Inclusive Education for Visual and Hearing Impaired Children
 
 ### Project Description
@@ -18,17 +20,55 @@ Pyinnyar Subuu is a web platform dedicated to providing inclusive education for 
 
 #### Technologies Used:
 
-- Python
-- Flask
-- Redis
-- HTML/CSS
-- Bootstrap
+- **Python:** We utilized Python as the primary programming language for backend development.
+- **Flask:** Flask was chosen as the web framework for its simplicity and flexibility in building web applications.
+- **Redis:** Redis serves as the in-memory data store for user authentication and session management.
+- **HTML/CSS:** We used HTML and CSS for structuring and styling the web pages, ensuring a visually appealing and accessible interface.
+- **Bootstrap:** Bootstrap framework was employed to enhance the responsiveness and design consistency of the platform.
 
-#### Getting Started:
+Feel free to explore Pyinnyar Subuu and join us in our mission to provide inclusive education for visually and hearing impaired children!
 
+## Table of Contents
+1. [Installation](#installation)
+2. [Usage](#usage)
+3. [Dependencies](#dependencies)
+4. [Configuration](#configuration)
+5. [Contributing](#contributing)
+6. [License](#license)
+
+## Installation
+To run Pyin Nyar Su Buu locally, follow these steps:
 1. Clone this repository to your local machine.
-2. Install the necessary dependencies using `pip install -r requirements.txt`.
-3. Set up a Redis server and configure the connection settings in the Flask app.
-4. Run the Flask app with `python app.py`.
+2. Install Python if you haven't already.
+3. Install the required dependencies by running `pip install -r requirements.txt`.
+4. Set up the necessary configuration (see Configuration section).
+5. Run the Flask application using `python app.py`.
+6. Access the application in your web browser at `http://localhost:3000`.
 
-Join us in our mission to provide equal educational opportunities for all children. You are welcome to explore the source code and contribute to this important initiative.
+## Usage
+Once the application is running, you can:
+- Navigate to different sections such as Essential, Steam, Formal Education, etc., using the provided links.
+- Explore resources, articles, and educational materials within each section.
+- Participate in interactive activities and quizzes related to various topics.
+- Log in or sign up to access additional features such as bookmarking favorite resources or tracking progress.
+
+## Dependencies
+Pyin Nyar Su Buu relies on the following dependencies:
+- Flask: Web framework for building the application.
+- Redis: In-memory data store for user authentication and data storage.
+- Google OAuth: Authentication mechanism for Google login.
+- Requests: HTTP library for making requests to external APIs.
+
+## Configuration
+Before running the application, make sure to set up the following configurations:
+- Update the `client_secret.json` file with your Google OAuth client credentials.
+- Configure Redis connection settings in the `app.py` file to match your Redis instance.
+
+## Contributing
+Contributions to Pyin Nyar Su Buu are welcome! If you'd like to contribute, please follow these guidelines:
+- Fork the repository and create a new branch for your feature or bug fix.
+- Make your changes and test them thoroughly.
+- Submit a pull request detailing the changes you've made and any relevant information.
+
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

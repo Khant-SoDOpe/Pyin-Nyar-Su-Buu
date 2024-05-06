@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session, send_file, abort
 from functools import wraps
+from dotenv import load_dotenv
+import os
 
 from routes.essential import essential_bp
 from routes.steam import steam_bp
@@ -10,9 +12,8 @@ from routes.google import google_bp
 
 # Initialize Flask app
 app = Flask(__name__)
-app.secret_key = "handsomeKhant"
-
-
+load_dotenv()
+app.secret_key = os.getenv("SECRET_KEY")
 
 # Routes
 
