@@ -13,7 +13,7 @@ from routes.google import google_bp
 # Initialize Flask app
 app = Flask(__name__)
 load_dotenv()
-app.secret_key = "something"
+app.secret_key = os.getenv("SECRET_KEY")
 # Routes
 
 @app.route("/")
