@@ -5,46 +5,67 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup</title>
-  <link rel="icon" href="../static/images/favicon.png">
-  <link rel="canonical"     href="https://getbootstrap.com/docs/5.0/examples/navbars/">
+    <link rel="icon" href="../static/images/favicon.png">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/navbars/">
     <!-- Bootstrap core CSS -->
     <link href="../static/css/bootstrap.min.css" rel="stylesheet">
     <script type="text/javascript" src="js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     
-  	<!-- Google font for Poppins -->
+    <!-- Google font for Poppins -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600&display=swap" rel="stylesheet">
     
     <!-- Custom styles for this template -->
     <link href="../static/css/navbar.css" rel="stylesheet">
-     <link rel="stylesheet" href="../static/css/footer.css" />
+    <link rel="stylesheet" href="../static/css/footer.css" />
 
     <!-- Global Javascript -->
     <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
   
     <style>
-        body,.card,input{
+        body, .card, input {
             background: #C5E4F1 !important;
         }
-        .card{
+        .card {
             box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         }
-        .create{
+        .myanmar {
+            color: #EEB252 !important;
+            text-align: center !important;
+            font-family: 'Myanmar MN';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 32px !important;
+        }
+        .create {
             background: #0E1237 !important;
             color: #fff !important;
         }
-        .conditions{
+        .conditions {
             color: #EEB252 !important;
+        }
+        .navbar {
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            top: 0;
+        }
+        .content {
+            padding-top: 120px; /* Adjust based on the height of the navbar + original distance */
         }
     </style>
 </head> 
 <body style="margin:0px;">
-    <!--  start nav-bar -->
-  {% include 'header.html' %}
-       <!--  end nav-bar -->
-        <!--  start form -->
+    <!-- Start nav-bar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        {% include 'header.html' %}
+    </nav>
+    <!-- End nav-bar -->
+
+    <!-- Start form -->
+    <div class="content">
         <section class="h-100 h-custom">
             <div class="container py-5 h-100">
               <div class="row d-flex justify-content-center align-items-center h-100">
@@ -52,53 +73,56 @@
                   <div class="card rounded-3">
                     <div class="card-body p-4 p-md-5">
                       <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2 text-center">Signup</h3>
+                      <p class="myanmar">ပညာစုဘူးမှကြိုဆိုပါသည်။</p>
           
                       <form class="px-md-2" action="/signup" method="post">
           
                         <div class="form-outline mb-4">
-                          <input type="text" placeholder="Name" name="Name" autofocus id="form3Example1q" class="form-control"  required/>
+                          <input type="text" placeholder="Name" name="Name" autofocus id="form3Example1q" class="form-control" required/>
                         </div>
                         <div class="form-outline mb-4">
                           <input type="email" placeholder="Email" name="Email" id="form3Example1q" class="form-control" required/>
                         </div>
                         <div class="form-outline mb-4">
-                          <input type="password"placeholder="Password" name="Password" id="form3Example1q" class="form-control" required />
+                          <input type="password" placeholder="Password" name="Password" id="form3Example1q" class="form-control" required />
                         </div>
                         <div class="form-outline mb-4">
-                          <input type="password"placeholder="Confirm Password" name="Password2" id="form3Example1q" class="form-control" required/>
+                          <input type="password" placeholder="Confirm Password" name="Password2" id="form3Example1q" class="form-control" required/>
                         </div>
-                          <div class="form-outline mb-4">
-                              <input type="checkbox" id="form3Example1q" required col-1"/>
-                            <label class="form-label text-black">I agree to</label>
-                              <label class="form-label conditions">Terms & Conditions</label>
+                        <div class="form-outline mb-4">
+                          <input type="checkbox" id="form3Example1q" required />
+                          <label class="form-label text-black">I agree to</label>
+                          <label class="form-label conditions">Terms & Conditions</label>
                         </div>
                         <div class="form-outline mn-4">
-                          <input type="submit" class="form-control btn create" value="Creat Account" />
+                          <input type="submit" class="form-control btn create" value="Create Account" />
                         </div>
                       </form>
-                        <div class="form-outline mn-4">
-                          <p style="padding-top: 50px;">Already have a account? <a href="/loginpage" style="color: gold;">Sign in</a></p>
-                        </div>
+                      <div class="form-outline mn-4">
+                        <p style="padding-top: 50px;">Already have an account? <a href="/loginpage" style="color: gold;">Sign in</a></p>
+                      </div>
           
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </section>
-        <!--  end form -->
+        </section>
+    </div>
+    <!-- End form -->
+
     {% include 'footer.html' %}
     {% if condition %}
       <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
       <script>
         var contact = "{{ contact }}";
         Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: contact
-      });
+          icon: "error",
+          title: "Oops...",
+          text: contact
+        });
       </script>
     {% endif %}
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>  
 </body>
 </html>
