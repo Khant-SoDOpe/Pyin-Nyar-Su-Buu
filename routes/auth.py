@@ -9,11 +9,13 @@ load_dotenv()
 
 
 # Redis configuration
-r = redis.Redis(
-    host= os.getenv("REDIS_HOST"),
-    port= os.getenv("REDIS_PORT"),
-    password= os.getenv("REDIS_PASSWORD")
-)
+# r = redis.Redis(
+#     host= os.getenv("REDIS_HOST"),
+#     port= os.getenv("REDIS_PORT"),
+#     password= os.getenv("REDIS_PASSWORD")
+# )
+
+r = redis.from_url(os.environ['REDIS_URL'])
 
 # Decorator for requiring authentication
 def require_auth(view):
